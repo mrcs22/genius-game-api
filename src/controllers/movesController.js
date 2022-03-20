@@ -1,6 +1,6 @@
 import * as movesService from "../services/movesService.js";
 import jwt from "jsonwebtoken"
-import *as scoreService from "../services/scoreService.js";
+import * as scoreService from "../services/scoreService.js";
 
 async function doMove(req, res){
     const { move } = req.params
