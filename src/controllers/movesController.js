@@ -8,7 +8,7 @@ async function doMove(req, res){
     const token = authorization?.replace("Bearer ", "")
 
     try {
-        const validMoves = new Set(['0','1','2','3'])
+        const validMoves = new Set(['0','1','2','3','end'])
         if(!validMoves.has(move)) return res.sendStatus(403)
 
         if(!token) return res.sendStatus(401)

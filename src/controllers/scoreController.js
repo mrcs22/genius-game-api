@@ -22,4 +22,17 @@ async function getScore(req, res){
     }
 }
 
-export {getScore}
+async function getTopScores(req, res){
+   
+    try {
+        const topScores = await scoreService.getTopScores()
+   
+        return res.send(topScores);
+        
+    } catch (error) {
+        console.error(error)
+        res.sendStatus(500)
+    }
+}
+
+export {getScore,getTopScores}

@@ -14,7 +14,8 @@ app.post("/sign-in", userController.signIn)
 app.post("/moves/:move", movesController.doMove)
 app.get("/moves", movesController.getNextMove)
 
-app.get("/score", scoreController.getScore)
+app.get("/scores", scoreController.getScore)
+app.get("/scores/top", scoreController.getTopScores)
 
 
 

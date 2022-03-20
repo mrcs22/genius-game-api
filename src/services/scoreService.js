@@ -43,4 +43,22 @@ async function getUserScore(username) {
     }
   }
 
-export {saveScore, getUserScore}
+  async function getTopScores() {
+    try {      
+      const dbConnection = await getDbConnection();
+       
+      const [rows] = await dbConnection.execute(`
+      SELECT username, points, ts as date FROM scores
+      JOIN users on scores.id_user=users.id_user
+      ORDER BY points DESC
+      LIMIT 5
+      `);
+  
+      dbConnection.end()
+      
+      return rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+export {saveScore, getUserScore,getTopScores}
