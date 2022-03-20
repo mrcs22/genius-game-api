@@ -2,7 +2,7 @@ import getDbConnection from "./getDbConnection.js";
 import fs from "fs"
 
 try {
-const queries = fs.readFileSync("./database/db.sql").toString().split(";")
+const queries = fs.readFileSync("./src/database/db.sql").toString().split(";")
 
 const dbConnection = await getDbConnection()
 
