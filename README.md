@@ -13,7 +13,7 @@
 
 # About
 
-<p align="left">project guided by <a href="https://github.com/nathyts/"> Nathally Souza </a> in the Cognizant Cloud Data Engineer #2 bootcamp with the objective of practicing the content studied in the Mysql courses, such as relationships, table manipulation clauses, and CRUD, also taught by her. Initially it would be a project to control TV series, but I decided to customize it to make one to manage a game in the Genius style. So this is an API for Genius memory game, where you can select a color, get expected colors, and get user and top 5 users scores. This application is used at Genius game that you can access by clicking <a href="https://github.com/mrcs22/Jogo-de-memoria-estilo-Genius"> here. </a></p>
+<p align="left">Project guided by <a href="https://github.com/nathyts/"> Nathally Souza </a> in the Cognizant Cloud Data Engineer #2 bootcamp at <a href="https://www.dio.me/en"> DIO</a> with the objective of practicing the content studied in the Mysql courses, such as relationships, table manipulation clauses, and CRUD, also taught by her. Initially it would be a project to control TV series, but I decided to customize it to make one to manage a game in the Genius style. So this is an API for Genius memory game, where you can select a color, get expected colors, and get user and top 5 users scores. This application is used at Genius game that you can access by clicking <a href="https://github.com/mrcs22/Jogo-de-memoria-estilo-Genius"> here. </a></p>
 
 <!-- Features -->
 
