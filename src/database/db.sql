@@ -1,7 +1,7 @@
 CREATE TABLE users (
     id_user int AUTO_INCREMENT,
     username varchar(30) not null,
-    password varchar(8) not null,
+    password varchar(100) not null,
     PRIMARY KEY (id_user)
 );
 CREATE TABLE scores (

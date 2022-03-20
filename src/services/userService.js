@@ -24,13 +24,13 @@ async function saveUser(username, password) {
       const dbConnection = await getDbConnection();
   
       const safeUsername = dbConnection.escape(username).toLocaleLowerCase();
-      const safePassword = dbConnection.escape(password);
+      
       
       await dbConnection.execute(`
         INSERT INTO users
         (username, password)
         VALUES
-        (${safeUsername}, ${safePassword})
+        (${safeUsername}, '${password}')
       `);
   
       dbConnection.end()
