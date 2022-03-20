@@ -2,6 +2,7 @@ import {userData} from "../schemas/userSchema.js"
 import * as userService from "../services/userService.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { resetMoves } from "../services/movesService.js";
 
 async function signUp(req, res){
     try {
@@ -41,6 +42,8 @@ async function signIn(req, res){
         const tokenconfig = { expiresIn: 60 * 60 * 24 * 7 };
   
         const token = jwt.sign({ username }, jwtSecret, tokenconfig);
+
+        await resetMoves(username)
   
         return res.send({ token });
         

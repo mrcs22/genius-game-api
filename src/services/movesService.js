@@ -63,7 +63,7 @@ async function getExpectedMove(username){
         `);
     
         dbConnection.end()
-        
+ 
         return rows[0] ? rows[0].value : 1;
       } catch (error) {
         throw error;

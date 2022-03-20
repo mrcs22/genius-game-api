@@ -1,4 +1,5 @@
 import getDbConnection from "../database/getDbConnection.js";
+import * as movesService from "./movesService.js";
 
 async function getUserByUsername(username) {
   try {      

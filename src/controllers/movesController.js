@@ -5,7 +5,7 @@ import * as scoreService from "../services/scoreService.js";
 async function doMove(req, res){
     const { move } = req.params
     const { authorization } = req.headers
-    const token = authorization.replace("Bearer ", "")
+    const token = authorization?.replace("Bearer ", "")
 
     try {
         const validMoves = new Set(['0','1','2','3'])
@@ -28,7 +28,8 @@ async function doMove(req, res){
        }
        
        const nextMove = await movesService.saveNextMove(username)
-        return res.send({ nextMove });
+
+       return res.send({ nextMove });
         
     } catch (error) {
         console.error(error)
@@ -39,7 +40,7 @@ async function doMove(req, res){
 
 async function getNextMove(req, res){
     const { authorization } = req.headers
-    const token = authorization.replace("Bearer ", "")
+    const token = authorization?.replace("Bearer ", "")
 
     try {
        if(!token) return res.sendStatus(401)
