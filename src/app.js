@@ -11,7 +11,9 @@ app.use(cors())
 app.post("/sign-up", userController.signUp)
 app.post("/sign-in", userController.signIn)
 
-app.post("/move/:move", movesController.play)
+app.post("/moves/:move", movesController.doMove)
+app.get("/moves", movesController.getNextMove)
+
 
 
 export default app

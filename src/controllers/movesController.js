@@ -2,7 +2,7 @@ import * as movesService from "../services/movesService.js";
 import jwt from "jsonwebtoken"
 import *as scoreService from "../services/scoreService.js";
 
-async function play(req, res){
+async function doMove(req, res){
     const { move } = req.params
     const { authorization } = req.headers
     const token = authorization.replace("Bearer ", "")
@@ -37,4 +37,27 @@ async function play(req, res){
 }
 
 
-export {play}
+async function getNextMove(req, res){
+    const { authorization } = req.headers
+    const token = authorization.replace("Bearer ", "")
+
+    try {
+       if(!token) return res.sendStatus(401)
+
+        const jwtSecret = process.env.JWT_SECRET;
+        const { username } = jwt.decode(token, jwtSecret);
+
+        const nextMove = await movesService.getExpectedMove(username)
+
+      
+        return res.send({ nextMove });
+        
+    } catch (error) {
+        console.error(error)
+        res.sendStatus(500)
+    }
+}
+
+
+
+export {doMove, getNextMove}
