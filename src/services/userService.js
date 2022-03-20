@@ -1,10 +1,9 @@
-import getDbConnection from "../database/getDbConnection.js";
+import dbConnection from "../database/dbConnection.js";
 import * as movesService from "./movesService.js";
 
 async function getUserByUsername(username) {
   try {      
-    const dbConnection = await getDbConnection();
-
+    
     const safeUsername = dbConnection.escape(username).toLocaleLowerCase();
     
     const [rows] = await dbConnection.execute(`
@@ -12,7 +11,7 @@ async function getUserByUsername(username) {
     WHERE username=${safeUsername}
     `);
 
-    dbConnection.end()
+    
     
     return rows[0] ? rows[0] : null;
   } catch (error) {
@@ -22,8 +21,7 @@ async function getUserByUsername(username) {
 
 async function saveUser(username, password) {
     try {      
-      const dbConnection = await getDbConnection();
-  
+        
       const safeUsername = dbConnection.escape(username).toLocaleLowerCase();
       
       
@@ -34,7 +32,7 @@ async function saveUser(username, password) {
         (${safeUsername}, '${password}')
       `);
   
-      dbConnection.end()
+      
       
       return true;
     } catch (error) {

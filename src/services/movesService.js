@@ -1,10 +1,9 @@
-import getDbConnection from "../database/getDbConnection.js";
+import dbConnection from "../database/dbConnection.js";
 import * as userService from "./userService.js";
 
 async function resetMoves(username){
     try {      
-        const dbConnection = await getDbConnection();
-
+     
         const user = await userService.getUserByUsername(username)
         
         await dbConnection.execute(`
@@ -21,7 +20,7 @@ async function resetMoves(username){
         `);
 
 
-        dbConnection.end()
+        
         
         return true
       } catch (error) {
@@ -31,8 +30,7 @@ async function resetMoves(username){
 
 async function saveNextMove(username){
     try {      
-        const dbConnection = await getDbConnection();
-
+   
         const user = await userService.getUserByUsername(username)
 
         const nextMove = Math.floor(Math.random()*4);
@@ -43,7 +41,7 @@ async function saveNextMove(username){
         WHERE id_user=${user.id_user}
         `);
     
-        dbConnection.end()
+        
         
         return nextMove;
       } catch (error) {
@@ -53,8 +51,6 @@ async function saveNextMove(username){
 
 async function getExpectedMove(username){
     try {      
-        const dbConnection = await getDbConnection();
-
         const user = await userService.getUserByUsername(username)
 
         const [rows] = await dbConnection.execute(`
@@ -62,7 +58,7 @@ async function getExpectedMove(username){
         WHERE id_user=${user.id_user}
         `);
     
-        dbConnection.end()
+        
  
         return rows[0] ? rows[0].value : 1;
       } catch (error) {
@@ -72,16 +68,13 @@ async function getExpectedMove(username){
 
 async function getMaxMovesHit(username){
     try {      
-        const dbConnection = await getDbConnection();
-
+      
         const user = await userService.getUserByUsername(username)
 
         const [rows] = await dbConnection.execute(`
         SELECT points FROM moves
         WHERE id_user=${user.id_user}
         `);
-    
-        dbConnection.end()
         
         return rows[0] ? rows[0].points : null;
       } catch (error) {
