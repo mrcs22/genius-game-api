@@ -8,6 +8,7 @@ CREATE TABLE scores (
     id_score int AUTO_INCREMENT,
     id_user int,
     points int,
+    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_score),
     FOREIGN KEY (id_user) REFERENCES users(id_user)
 );

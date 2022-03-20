@@ -10,7 +10,6 @@ async function signUp(req, res){
         
         const {username, password} = req.body
         const hashedPassword = bcrypt.hashSync(password, 8);
-        console.log(hashedPassword);
 
         const user = await userService.getUserByUsername(username)
         if(user) return res.sendStatus(409)
